@@ -1,0 +1,22 @@
+name: Prescreening tagger
+description: Adds prescreen tags on Scene Create or Demand
+version: 0.1
+url: https://github.com/scruffynerf/stash_prescreen
+exec:
+  - python3
+  - "{pluginDir}/prescreen.py"
+interface: raw
+hooks:
+  - name: Add Prescreen to Scene
+    description: Adds Prescreen tag(s) to newly added scenes
+    triggeredBy:
+      - Scene.Create.Post
+  - name: Remove Prescreen tags from Scene with stashid
+    description: Adds Prescreen tag(s) to newly added scenes
+    triggeredBy:
+      - Scene.Update.Post
+tasks:
+  - name: 'Tag UnIdentified Scenes with Prescreen Tag(s)'
+    description: Tag stashid-less scenes with prescreen tags
+    defaultArgs:
+      mode: prescreen_all
