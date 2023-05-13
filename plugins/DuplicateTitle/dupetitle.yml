@@ -1,0 +1,19 @@
+name: Duplicate Title/ID/URL tagger
+description: Adds Duplicate Title/ID/URL tag
+version: 0.1
+url: https://github.com/scruffynerf/stashstuff
+exec:
+  - python3
+  - "{pluginDir}/dupetitle.py"
+interface: raw
+hooks:
+  - name: Duplicate Tag Scene
+    description: Adds/Removes Duplicate tag to scenes
+    triggeredBy:
+      - Scene.Create.Post
+      - Scene.Update.Post
+tasks:
+  - name: 'Tag Scenes with Duplicate Titles/IDs/URLs'
+    description: Tag Duplicate Titles/IDs/URLs
+    defaultArgs:
+      mode: dupefindall
